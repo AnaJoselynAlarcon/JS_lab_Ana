@@ -10,8 +10,9 @@ You are encouraged to use the provided naming convention for ease of review.
 /* create variables to hold the values for modelName and duration */
 
 // INSERT YOUR CODE HERE
-var modelName = modelName.value
-var duration = duration.value
+var modelName = document.getElementById("model-text").innerHTML;
+//alert(modelName);
+var duration = document.getElementById("duration-text").innerHTML;
 
 /*innerhtml, onclick, math */
 
@@ -31,16 +32,15 @@ var duration = duration.value
 
 function recalculate()
 {
-    var costLabel;
     var costLabel = document.getElementById("calculated-cost");
 
-    if(modelName = "XYZ")
-    new_total_cost = (duration * 100)
+    if(modelName == "Model XYZ")
+        { costLabel = duration * 100}
 
-    if(modelName = "CPRG")
-    new_total_cost = (duration * 213)
+   else
+        { costLabel = duration * 213}
 
-document.getElementById("calculated-cost").innerHTML=new_total_cost
+    document.getElementById("calculated-cost").innerHTML = costLabel;
 }
 
 
@@ -58,13 +58,34 @@ document.getElementById("calculated-cost").innerHTML=new_total_cost
     - if modelName is currently "CPRG", change the value of modelName to "XYZ", and change the innerHTML of the model-text span element to "Model XYZ"
     - then, recalculate() the total cost.
 - finally, uncomment the following line of JavaScript to have this function run automatically whenever the pseudo-button is clicked: */
-    // modelButton.addEventListener("click", changeModel);
+
 
 // INSERT YOUR CODE HERE
 
-switch_model = getElementById("model-button");
+var modelButton = document.getElementById("model-button");
 
+function changeModel()
+{
+    var model_text = document.getElementById("model-text");
 
+    if (modelName == "Model XYZ")
+    {
+        modelName ="Model CPRG";
+        model_text.innerHTML=modelName;
+    }
+
+   else
+    {
+        modelName ="Model XYZ";
+        model_text.innerHTML=modelName;
+    }
+
+    recalculate();
+}
+if(modelButton)
+{
+    modelButton.addEventListener("click", changeModel);
+}
 
 
 
@@ -81,5 +102,16 @@ switch_model = getElementById("model-button");
 
 // INSERT YOUR CODE HERE
 
+var change_duration = document.getElementById("duration-button");
 
+function changeDuration()
+{
+    var duration_text = document.getElementById("duration-text").innerHTML;
+    duration_text = parseInt(prompt("New duration"));
 
+    duration = duration_text
+
+    document.getElementById("duration-text").innerHTML = parseInt(duration)
+
+recalculate(duration)
+}
