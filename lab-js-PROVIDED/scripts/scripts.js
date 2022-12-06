@@ -1,4 +1,4 @@
-/****************** YOUR NAME: ANA ALARCON
+/* YOUR NAME: ANA ALARCON
 
 The instructions describe the missing logic that is needed; you will translate these into JavaScript in the places indicated.
 
@@ -12,7 +12,7 @@ You are encouraged to use the provided naming convention for ease of review.
 // INSERT YOUR CODE HERE
 var modelName = document.getElementById("model-text").innerHTML;
 //alert(modelName);
-var duration = document.getElementById("duration-text").innerHTML;
+var duration = 0;
 
 /*innerhtml, onclick, math */
 
@@ -35,10 +35,14 @@ function recalculate()
     var costLabel = document.getElementById("calculated-cost");
 
     if(modelName == "Model XYZ")
-        { costLabel = duration * 100}
+        { 
+            costLabel = duration * 100;
+        }
 
    else
-        { costLabel = duration * 213}
+        { 
+            costLabel = duration * 213;
+        }
 
     document.getElementById("calculated-cost").innerHTML = costLabel;
 }
@@ -106,12 +110,17 @@ var change_duration = document.getElementById("duration-button");
 
 function changeDuration()
 {
-    var duration_text = document.getElementById("duration-text").innerHTML;
+    var duration_text = document.getElementById("duration-text");
     duration_text = parseInt(prompt("New duration"));
+   
 
-    duration = duration_text
+    duration = duration_text;
+    
+    document.getElementById("duration-text").innerHTML = duration;
 
-    document.getElementById("duration-text").innerHTML = parseInt(duration)
-
-recalculate(duration)
+    recalculate();
+}
+if(change_duration)
+{
+    change_duration.addEventListener("click", changeDuration);
 }
